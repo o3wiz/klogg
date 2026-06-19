@@ -8,54 +8,46 @@
     },
     "configurePresets": [
         {
+            "hidden": true,
+            "name": "__base",
+            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+            "cacheVariables": {
+                "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+                "CMAKE_POLICY_VERSION_MINIMUM": "3.5"
+            },
+            "binaryDir": "${sourceDir}/build"
+        },
+        {
+            "inherits": "__base",
             "name": "mac",
-            "displayName": "macOS (Ninja Multi-Config)",
+            "displayName": "macOS",
             "generator": "Ninja Multi-Config",
-            "binaryDir": "${sourceDir}/build/mac",
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
                 "rhs": "Darwin"
-            },
-            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-            "cacheVariables": {
-                "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": true,
-                "CMAKE_POLICY_VERSION_MINIMUM": "3.5"
             }
         },
         {
+            "inherits": "__base",
             "name": "linux",
-            "displayName": "Linux (Ninja Multi-Config)",
+            "displayName": "Linux",
             "generator": "Ninja Multi-Config",
-            "binaryDir": "${sourceDir}/build/linux",
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
                 "rhs": "Linux"
-            },
-            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-            "cacheVariables": {
-                "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": true,
-                "CMAKE_POLICY_VERSION_MINIMUM": "3.5"
             }
         },
         {
             "name": "windows",
-            "displayName": "Windows (Visual Studio 2026)",
+            "displayName": "Windows",
             "generator": "Visual Studio 18 2026",
-            "binaryDir": "${sourceDir}/build/windows",
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
                 "rhs": "Windows"
-            },
-            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-            "cacheVariables": {
-                "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": true,
-                "CMAKE_POLICY_VERSION_MINIMUM": "3.5"
             }
         }
     ],
