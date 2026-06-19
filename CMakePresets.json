@@ -18,9 +18,6 @@
                 "rhs": "Darwin"
             },
             "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-            "environment": {
-                "VCPKG_ROOT": "/Users/danielaviv/dev/deps/vcpkg"
-            },
             "cacheVariables": {
                 "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": true,
@@ -38,9 +35,6 @@
                 "rhs": "Linux"
             },
             "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-            "environment": {
-                "VCPKG_ROOT": "/Users/danielaviv/dev/deps/vcpkg"
-            },
             "cacheVariables": {
                 "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": true,
@@ -58,9 +52,6 @@
                 "rhs": "Windows"
             },
             "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-            "environment": {
-                "VCPKG_ROOT": "/Users/danielaviv/dev/deps/vcpkg"
-            },
             "cacheVariables": {
                 "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": true,
