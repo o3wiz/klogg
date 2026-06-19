@@ -1,0 +1,101 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Kitware/CMake/master/Help/manual/presets/schema.json",
+    "version": 11,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 25,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "hidden": true,
+            "name": "__base",
+            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+            "cacheVariables": {
+                "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+                "CMAKE_POLICY_VERSION_MINIMUM": "3.5"
+            },
+            "binaryDir": "${sourceDir}/build"
+        },
+        {
+            "inherits": "__base",
+            "name": "mac",
+            "displayName": "macOS",
+            "generator": "Ninja Multi-Config",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            }
+        },
+        {
+            "inherits": "__base",
+            "name": "linux",
+            "displayName": "Linux",
+            "generator": "Ninja Multi-Config",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        },
+        {
+            "name": "windows",
+            "displayName": "Windows",
+            "generator": "Visual Studio 18 2026",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "mac-debug",
+            "configurePreset": "mac",
+            "configuration": "Debug"
+        },
+        {
+            "name": "mac-release",
+            "configurePreset": "mac",
+            "configuration": "Release"
+        },
+        {
+            "name": "mac-relwithdebinfo",
+            "configurePreset": "mac",
+            "configuration": "RelWithDebInfo"
+        },
+        {
+            "name": "linux-debug",
+            "configurePreset": "linux",
+            "configuration": "Debug"
+        },
+        {
+            "name": "linux-release",
+            "configurePreset": "linux",
+            "configuration": "Release"
+        },
+        {
+            "name": "linux-relwithdebinfo",
+            "configurePreset": "linux",
+            "configuration": "RelWithDebInfo"
+        },
+        {
+            "name": "windows-debug",
+            "configurePreset": "windows",
+            "configuration": "Debug"
+        },
+        {
+            "name": "windows-release",
+            "configurePreset": "windows",
+            "configuration": "Release"
+        },
+        {
+            "name": "windows-relwithdebinfo",
+            "configurePreset": "windows",
+            "configuration": "RelWithDebInfo"
+        }
+    ]
+}
