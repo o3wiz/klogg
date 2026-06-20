@@ -11,6 +11,17 @@ runs:
         echo "KLOGG_ARCH=${{ matrix.config.arch }}" >> $GITHUB_ENV 
         echo "KLOGG_CMAKE_OPTS=-G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DKLOGG_GENERIC_CPU=ON -DKLOGG_USE_SENTRY=OFF -DCMAKE_INSTALL_PREFIX=/usr ${{ matrix.config.cmake_opts }}" >> $GITHUB_ENV
 
+    - name: Set vcpkg env var
+      shell: sh
+      run: |
+        # GitHub-hosted runners expose vcpkg via VCPKG_INSTALLATION_ROOT, but the
+        # build (and CMakePresets.json) reference VCPKG_ROOT. Mirror it so the
+        # toolchain file resolves on macOS/Windows agents. Linux docker builds use
+        # the VCPKG_ROOT baked into their container image instead.
+        if [ -n "$VCPKG_INSTALLATION_ROOT" ]; then
+          echo "VCPKG_ROOT=$VCPKG_INSTALLATION_ROOT" >> $GITHUB_ENV
+        fi
+
     - name: Set qt env var
       if: "startsWith(matrix.config.qt_version, '5')"
       shell: sh
