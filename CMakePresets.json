@@ -41,6 +41,7 @@
             }
         },
         {
+            "inherits": "__base",
             "name": "windows",
             "displayName": "Windows",
             "generator": "Visual Studio 18 2026",
@@ -53,48 +54,71 @@
     ],
     "buildPresets": [
         {
+            "hidden": true,
+            "name": "__base",
+            "jobs": 0
+        },
+        {
+            "hidden": true,
+            "inherits": "__base",
+            "name": "__mac_base",
+            "configurePreset": "mac"
+        },
+        {
+            "hidden": true,
+            "inherits": "__base",
+            "name": "__linux_base",
+            "configurePreset": "linux"
+        },
+        {
+            "hidden": true,
+            "inherits": "__base",
+            "name": "__windows_base",
+            "configurePreset": "windows"
+        },
+        {
+            "inherits": "__mac_base",
             "name": "mac-debug",
-            "configurePreset": "mac",
             "configuration": "Debug"
         },
         {
+            "inherits": "__mac_base",
             "name": "mac-release",
-            "configurePreset": "mac",
             "configuration": "Release"
         },
         {
+            "inherits": "__mac_base",
             "name": "mac-relwithdebinfo",
-            "configurePreset": "mac",
             "configuration": "RelWithDebInfo"
         },
         {
+            "inherits": "__linux_base",
             "name": "linux-debug",
-            "configurePreset": "linux",
             "configuration": "Debug"
         },
         {
+            "inherits": "__linux_base",
             "name": "linux-release",
-            "configurePreset": "linux",
             "configuration": "Release"
         },
         {
+            "inherits": "__linux_base",
             "name": "linux-relwithdebinfo",
-            "configurePreset": "linux",
             "configuration": "RelWithDebInfo"
         },
         {
+            "inherits": "__windows_base",
             "name": "windows-debug",
-            "configurePreset": "windows",
             "configuration": "Debug"
         },
         {
+            "inherits": "__windows_base",
             "name": "windows-release",
-            "configurePreset": "windows",
             "configuration": "Release"
         },
         {
+            "inherits": "__windows_base",
             "name": "windows-relwithdebinfo",
-            "configurePreset": "windows",
             "configuration": "RelWithDebInfo"
         }
     ]
