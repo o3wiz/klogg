@@ -121,5 +121,33 @@
             "name": "windows-relwithdebinfo",
             "configuration": "RelWithDebInfo"
         }
+    ],
+    "packagePresets": [
+        {
+            "hidden": true,
+            "name": "__package_base",
+            "configurations": [
+                "Release"
+            ],
+            "packageDirectory": "packages"
+        },
+        {
+            "inherits": "__package_base",
+            "name": "mac-package",
+            "displayName": "macOS DMG (Release)",
+            "configurePreset": "mac",
+            "generators": [
+                "DragNDrop"
+            ]
+        },
+        {
+            "inherits": "__package_base",
+            "name": "linux-package",
+            "displayName": "Linux DEB (Release)",
+            "configurePreset": "linux",
+            "generators": [
+                "DEB"
+            ]
+        }
     ]
 }
