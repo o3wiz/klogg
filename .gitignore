@@ -61,3 +61,4 @@ cmake-build-relwithdebinfo/
 #website
 website/hugo
 website/resources/
+.DS_Store
