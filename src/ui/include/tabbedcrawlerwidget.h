@@ -71,6 +71,10 @@ class TabbedCrawlerWidget : public QTabWidget {
 
     void removeCrawler( int index );
 
+    // Switch to the next/previous tab, wrapping around at the ends.
+    void selectNextTab();
+    void selectPreviousTab();
+
   protected:
     void keyPressEvent( QKeyEvent* event ) override;
     void mouseReleaseEvent( QMouseEvent* event ) override;

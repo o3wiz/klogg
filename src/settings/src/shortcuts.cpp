@@ -245,6 +245,20 @@ const ShortcutAction::ShortcutList& ShortcutAction::defaultShortcutList()
             },
         },
         {
+            MainWindowNextTab,
+            {
+                QApplication::tr( "Switch to next tab" ),
+                QStringList{ QKeySequence( Qt::CTRL | Qt::SHIFT | Qt::Key_BracketRight ).toString() },
+            },
+        },
+        {
+            MainWindowPreviousTab,
+            {
+                QApplication::tr( "Switch to previous tab" ),
+                QStringList{ QKeySequence( Qt::CTRL | Qt::SHIFT | Qt::Key_BracketLeft ).toString() },
+            },
+        },
+        {
             MainWindowFollowFile,
             {
                 QApplication::tr( "Monitor file changes" ),
