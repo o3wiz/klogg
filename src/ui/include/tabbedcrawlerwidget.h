@@ -75,6 +75,10 @@ class TabbedCrawlerWidget : public QTabWidget {
     void selectNextTab();
     void selectPreviousTab();
 
+    // Relocate the current tab one position left/right. Does not wrap around.
+    void moveCurrentTabLeft();
+    void moveCurrentTabRight();
+
   protected:
     void keyPressEvent( QKeyEvent* event ) override;
     void mouseReleaseEvent( QMouseEvent* event ) override;

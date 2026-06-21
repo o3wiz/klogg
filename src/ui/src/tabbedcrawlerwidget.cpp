@@ -276,26 +276,47 @@ void TabbedCrawlerWidget::showContextMenu( int tab, QPoint globalPoint )
 
 void TabbedCrawlerWidget::selectNextTab()
 {
-    const int cnt = count();
-    if ( cnt <= 1 ) {
+    const int tabCount = count();
+    if ( tabCount <= 1 ) {
         return;
     }
 
-    const int currIdx = currentIndex();
-    const int nextTabIdx = ( currIdx + 1 ) % cnt;
+    const int currTabIdx = currentIndex();
+    const int nextTabIdx = ( currTabIdx + 1 ) % tabCount;
     setCurrentIndex( nextTabIdx );
 }
 
 void TabbedCrawlerWidget::selectPreviousTab()
 {
-    const int cnt = count();
-    if ( cnt <= 1 ) {
+    const int tabCount = count();
+    if ( tabCount <= 1 ) {
         return;
     }
 
-    const int currIdx = currentIndex();
-    const int prevTabIdx = ( currIdx + ( cnt - 1 ) ) % cnt;
+    const int currTabIdx = currentIndex();
+    const int prevTabIdx = ( currTabIdx + ( tabCount - 1 ) ) % tabCount;
     setCurrentIndex( prevTabIdx );
+}
+
+void TabbedCrawlerWidget::moveCurrentTabLeft()
+{
+    const int currTabIdx = currentIndex();
+    if ( currTabIdx <= 0 ) {
+        return;
+    }
+
+    tabBar()->moveTab( currTabIdx, currTabIdx - 1 );
+}
+
+void TabbedCrawlerWidget::moveCurrentTabRight()
+{
+    const int tabCount = count();
+    const int currTabIdx = currentIndex();
+    if ( !( 0 <= currTabIdx && currTabIdx + 1 < tabCount ) ) {
+        return;
+    }
+
+    tabBar()->moveTab( currTabIdx, currTabIdx + 1 );
 }
 
 void TabbedCrawlerWidget::keyPressEvent( QKeyEvent* event )

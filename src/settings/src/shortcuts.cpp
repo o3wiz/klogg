@@ -259,6 +259,22 @@ const ShortcutAction::ShortcutList& ShortcutAction::defaultShortcutList()
             },
         },
         {
+            MainWindowMoveTabLeft,
+            {
+                QApplication::tr( "Move current tab left" ),
+                QStringList{ QKeySequence( Qt::CTRL | Qt::SHIFT | Qt::ALT | Qt::Key_BracketLeft )
+                                 .toString() },
+            },
+        },
+        {
+            MainWindowMoveTabRight,
+            {
+                QApplication::tr( "Move current tab right" ),
+                QStringList{ QKeySequence( Qt::CTRL | Qt::SHIFT | Qt::ALT | Qt::Key_BracketRight )
+                                 .toString() },
+            },
+        },
+        {
             MainWindowFollowFile,
             {
                 QApplication::tr( "Monitor file changes" ),
