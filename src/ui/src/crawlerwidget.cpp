@@ -795,6 +795,15 @@ AbstractLogView* CrawlerWidget::activeView() const
     }
 }
 
+void CrawlerWidget::updateInactiveViewDimming()
+{
+    const bool filteredFocused = filteredView_->hasFocus();
+    logMainView_->setDimmed( filteredFocused );
+
+    const bool mainFocused = logMainView_->hasFocus();
+    filteredView_->setDimmed( mainFocused );
+}
+
 void CrawlerWidget::searchForward()
 {
     LOG_DEBUG << "CrawlerWidget::searchForward";
@@ -1264,6 +1273,10 @@ void CrawlerWidget::setup()
     // Detect activity in the views
     connect( logMainView_, &LogMainView::activity, this, &CrawlerWidget::activityDetected );
 
+    // Keep the inactive view dimmed as focus moves between the views.
+    connect( logMainView_, &LogMainView::focusChanged, this,
+             &CrawlerWidget::updateInactiveViewDimming );
+
     connect( logMainView_, &LogMainView::changeSearchLimits, this,
              &CrawlerWidget::setSearchLimits );
 
@@ -1448,6 +1461,9 @@ void CrawlerWidget::connectAllFilteredViewSlots( FilteredView* view )
              QOverload<>::of( &LogMainView::setFocus ) );
 
     connect( view, &AbstractLogView::clearColorLabels, this, &CrawlerWidget::clearColorLabels );
+
+    connect( view, &AbstractLogView::focusChanged, this,
+             &CrawlerWidget::updateInactiveViewDimming );
 
     connect( logMainView_, &LogMainView::exitView, view,
              QOverload<>::of( &FilteredView::setFocus ) );
